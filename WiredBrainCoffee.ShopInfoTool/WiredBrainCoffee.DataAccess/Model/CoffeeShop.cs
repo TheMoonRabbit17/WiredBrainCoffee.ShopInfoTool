@@ -5,8 +5,6 @@
         public string Location { get; set; }
 
         public int BeansInStockInKg { get; set; }
-
-        public int PaperCupsInStock { get; set; }
-
+        public object BeansInStockInKg { get; set; }
     }
 }
