@@ -61,4 +61,6 @@ namespace WiredBrainCoffee.ShopInfoTool
                 }
             }
         }
+    }
+}
 
