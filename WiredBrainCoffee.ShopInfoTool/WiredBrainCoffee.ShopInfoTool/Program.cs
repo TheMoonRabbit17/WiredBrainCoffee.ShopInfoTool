@@ -34,39 +34,33 @@ namespace WiredBrainCoffee.ShopInfoTool
                         Console.WriteLine($"> " + coffeeShop.Location);
                     }
                 }
-
                 else
                 {
+                    var foundCoffeeShops = coffeeShops
+                          .Where(x => x.Location.StartsWith(line, StringComparison.OrdinalIgnoreCase))
+                          .ToList();
+
+                    if (foundCoffeeShops.Count == 0)
                     {
-                        var foundCoffeeShops = coffeeShops
-                              .Where(x => x.Location.StartsWith(line, StringComparison.OrdinalIgnoreCase))
-                              .ToList();
-
-                        if (foundCoffeeShops.Count == 0)
+                        Console.WriteLine($"> Command '{line}' not found");
+                    }
+                    else if (foundCoffeeShops.Count == 1)
+                    {
+                        var coffeeShop = foundCoffeeShops.Single();
+                        Console.WriteLine($"> Location: {coffeeShop.Location}");
+                        Console.WriteLine($"> Beans in stock: {coffeeShop.BeansInStockInKg} kg");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"> Multiple matching coffee shop commands found:");
+                        foreach (var coffeeType in foundCoffeeShops)
                         {
-                            Console.WriteLine($"> Command '{line}' not found");
-                        }
-                        else if (foundCoffeeShops.Count == 1)
-                        {
-                            var coffeeShop = foundCoffeeShops.Single();
-                            Console.WriteLine($"> Location: {coffeeShop.Location}");
-                            Console.WriteLine(value: $"> Beans in stock: {coffeeShop.BeansInStockInKg} kg");
-                        }
-                        else
-                        {
-                            Console.WriteLine($"> Multiple matching coffee shop commands found:");
-                            foreach (var coffeeType in foundCoffeeShops)
-                            {
-                                Console.WriteLine($"> {coffeeType.Location}");
-
-                            }
+                            Console.WriteLine($"> {coffeeType.Location}");
                         }
                     }
-
                 }
             }
         }
     }
 }
-
 
