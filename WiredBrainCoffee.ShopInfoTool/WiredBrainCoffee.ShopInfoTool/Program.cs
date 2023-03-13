@@ -13,7 +13,7 @@ namespace WiredBrainCoffee.ShopInfoTool
             Console.WriteLine("Wired Brain Coffee - Shop Info Tool!");
 
             Console.WriteLine("Write 'help' to list available coffee shop commands, " +
-              "write 'quit' to exit application");
+              "write 'exit' to exit application");
 
             var coffeeShopDataProvider = new CoffeeShopDataProvider();
 
@@ -21,7 +21,7 @@ namespace WiredBrainCoffee.ShopInfoTool
             {
                 var line = Console.ReadLine();
 
-                if (string.Equals("quit", line, StringComparison.OrdinalIgnoreCase))
+                if (string.Equals("Exit", line, StringComparison.OrdinalIgnoreCase))
                 {
                     break;
                 }
